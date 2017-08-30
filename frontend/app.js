@@ -47,7 +47,14 @@ export default class App extends Component {
 
   // Handle Login with Facebook button tap
   loginWithFacebook = () => {
-      this.openURL('http://Bublars-MBP.lan:3000/auth/facebook');
+      // iOS
+      if (Platform.OS === 'ios') {
+        this.openURL('http://127.0.0.1:3000/auth/facebook');
+      }
+      // Android
+      else {
+        this.openURL('http://10.0.2.2:3000/auth/facebook');
+      }
   }
 
   // Open URL in a browser
