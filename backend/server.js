@@ -4,7 +4,7 @@ import FacebookStrategy from 'passport-facebook';
 // Import Facebook OAuth apps configs
 import { facebook } from './config';
 
-var os = require("os");
+var ip = require("ip");
 
 const transformFacebookProfile = (profile) => ({
   name: profile.name,
@@ -41,7 +41,7 @@ app.get('/auth/facebook/callback',
   (req, res) => res.redirect('OAuthLogin://login?user=' + JSON.stringify(req.user)));
 
 // Launch the server on the port 3000
-const server = app.listen(3000, os.hostname(), () => {
+const server = app.listen(3000, ip.address(), () => {
   const { address, port } = server.address();
   console.log(`Listening at http://${address}:${port}`);
 });
